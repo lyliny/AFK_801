@@ -4,7 +4,7 @@
 * 自动执行的操作：  
        1. 提醒  
        2. 防挂机死  
-       3. ~~自动~~（看活动）  
+       3. ~~？全自动？~~  
   
 *  食用方法：  
        1.安装软件[AutoHotkey](https://github.com/AutoHotkey/AutoHotkey/releases)  
