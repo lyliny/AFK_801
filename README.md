@@ -7,6 +7,6 @@
        3. ~~？全自动？~~  
   
 *  食用方法：  
-       1.安装软件[AutoHotkey](https://github.com/AutoHotkey/AutoHotkey/releases)  
-       2.下载对应[活动脚本](https://github.com/lyliny/AFK_801/releases)  
+       1.安装软件[AutoHotkey](https://github.com/AutoHotkey/AutoHotkey/releases)(.exe文件）  
+       2.下载对应[活动脚本](https://github.com/lyliny/AFK_801/releases)（.ahk文件）  
        3.双击下载的脚本即可食用  
