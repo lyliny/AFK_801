@@ -9,6 +9,9 @@
        5. ~~？全自动？~~  
        6. 可自行调整功能（在.ahk文件最底下,注意[设置语法](https://wyagd001.github.io/v2/docs/index.htm)）  
 *  食用方法：  
-       1.安装软件[AutoHotkey](https://github.com/AutoHotkey/AutoHotkey/releases)(.exe文件）  
-       2.下载对应[活动脚本](https://github.com/lyliny/AFK_801/releases)（.ahk文件）  
-       3.双击下载的脚本即可食用  
+       1. 安装软件[AutoHotkey](https://github.com/AutoHotkey/AutoHotkey/releases)(.exe文件）  
+       2. 下载对应[活动脚本](https://github.com/lyliny/AFK_801/releases)（.ahk文件）  
+       3. 双击下载的脚本即可食用
+  
+*  其他好用程序：
+       1. [Clicker](https://gitee.com/fasterthanlight/automatic_clicker_2/releases)
