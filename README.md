@@ -9,7 +9,8 @@
        5. 由于绑定窗口，请使用**官网/Steam版**，禁用网页版 or 同时使用官网/Steam版（多开）       
        6. 可自行调整功能（在.ahk文件最底下,注意[设置语法](https://wyagd001.github.io/v2/docs/index.htm))        
        7. ~~？¿全自动¿？~~       
-     **PS:最好不要在脚本运行时玩FPS之类的竞技游戏哦，不然我也不知道会发生什么**       
+     **PS：由于AutoHotkey的特殊性质，因此被各大游戏厂商盯上，       
+           因此最好不要在脚本运行时玩FPS之类的竞技游戏哦，不然我也不知道会发生什么**       
          
 *  **食用方法：**  
        1. 安装软件[AutoHotkey](https://github.com/AutoHotkey/AutoHotkey/releases)(.exe文件）  
