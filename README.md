@@ -15,4 +15,5 @@
        3. 双击下载的脚本即可食用
   
 *  **其他好用程序：**  
-       1. [Clicker](https://gitee.com/fasterthanlight/automatic_clicker_2/releases)
+       1. [Clicker](https://gitee.com/fasterthanlight/automatic_clicker_2/releases)       
+       2. [ButtonAssist](https://github.com/zclucas/ButtonAssist/releases/)
