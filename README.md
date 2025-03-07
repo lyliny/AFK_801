@@ -20,6 +20,6 @@
        3. 由于AutoHotkey的特殊性质，因此最好不要在脚本运行时玩竞技游戏，不然我也不知道会发生什么       
        
 * **好用程序：**       
-       1. FindText：[英文版](https://www.autohotkey.com/boards/viewtopic.php?f=83&t=116471) ，[中文版](https://www.autoahk.com/archives/44766)      
+       1. FindText：[英文版](https://www.autohotkey.com/boards/viewtopic.php?f=83&t=116471) ，[中文版](https://www.autoahk.com/archives/44766) 制作本脚本的工具      
        2. [Clicker](https://gitee.com/fasterthanlight/automatic_clicker_2/releases)       
        3. [ButtonAssist](https://github.com/zclucas/ButtonAssist/releases/)       
