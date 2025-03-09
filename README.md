@@ -10,8 +10,8 @@
        6. 自行调整功能（在.ahk文件最底下,注意[设置语法](https://wyagd001.github.io/v2/docs/index.htm))       
        
 * **食用方法：**       
-       1. 安装软件[AutoHotkey](https://autohotkey.com/)
-       2. 使用指定版本进行游戏       
+       1. 安装软件[AutoHotkey](https://autohotkey.com/)       
+       2. 使用[指定版本](https://github.com/lyliny/AFK_801/releases/)来进行游戏       
        3. 下载对应活动脚本（.ahk文件）       
        4. 双击下载的脚本即可食用       
        
