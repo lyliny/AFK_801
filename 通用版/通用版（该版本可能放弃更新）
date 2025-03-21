@@ -6,7 +6,7 @@
 ;===已知bug：===
 ;===1.房间列表-创建新房间-游戏模式选项Transformice会被错误识别[修改方法:识别内容加长到@(修复后把3718行时间改长)]===
 
-;===注：放弃使用Steam或官网版本，转而使用Adobe Flash Player 10的打包版===
+;===注：放弃使用Steam或官网版本，转而使用Adobe Flash Player ??的打包版===
 ;===因此可能放弃更新===
 
 SetTitleMatchMode 2
