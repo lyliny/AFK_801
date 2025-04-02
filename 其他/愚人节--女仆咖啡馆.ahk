@@ -18,7 +18,7 @@ if (ok:=FindText(&X, &Y, 94-150000, 200-150000, 94+150000, 200+150000, 0, 0, Tex
   ; FindText().Click(X, Y, "L")
 }
 
-ok:=FindText(&X:="wait", &Y:=-1, 0,0,0,0,0,0,Text)  ; 等待3秒等图像出现
+ok:=FindText(&X:="wait", &Y:=-1, 0,0,0,0,0,0,Text)  ; 无限等待图像出现
 ; ok:=FindText(&X:="wait0", &Y:=-1, 0,0,0,0,0,0,Text)  ; 无限等待等图像消失
 
 ;MsgBox "找到:`t" (IsObject(ok)?ok.Length:ok)
