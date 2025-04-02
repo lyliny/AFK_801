@@ -3647,15 +3647,13 @@ Script_End() {
 }
 
 ;===执行操作（“;”为注释符，注释后不运行此代码）===
-
-
 WinActivate "Adobe Flash Player 20" ;激活TFM窗口
 Sleep 1000 ;暂停时间（毫秒）
 
 ;Loop 6
 ;{
- Send "{Right}"
-; Sleep 150 
+Send "{Right}"
+;Sleep 150 
 ;} ;按键操作?次(最好用方向键'UP\Down\Left\Right',防止卡输入法)
 
 SoundBeep 750, 2000 ;声音提醒;参数1数字越高，声音越尖，越小相反，限定区间(37-32767);参数2为时间（毫秒）
