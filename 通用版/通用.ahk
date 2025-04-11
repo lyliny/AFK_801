@@ -3494,7 +3494,7 @@ Script_End() {
 WinActivate "Adobe Flash Player 20" ;激活TFM窗口
 Sleep 500 ;暂停时间（毫秒）
 
-Send "{Space}"
+Send "{Up}"
 Sleep 100
 ;按键操作?次(最好用方向键'UP\Down\Left\Right',防止卡输入法)
 
