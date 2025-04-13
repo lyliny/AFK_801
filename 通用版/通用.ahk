@@ -3490,6 +3490,7 @@ Script_End() {
 }
 
 ;===执行操作（“;”为注释符，注释后不运行此代码）===
+;Run "" ;运行卡活动脚本
 
 WinActivate "Adobe Flash Player 20" ;激活TFM窗口
 Sleep 500 ;暂停时间（毫秒）
@@ -3498,11 +3499,11 @@ Send "{Up}"
 Sleep 100
 ;按键操作?次(最好用方向键'UP\Down\Left\Right',防止卡输入法)
 
-SoundBeep 750, 2000 ;声音提醒;参数1数字越高，声音越尖，越小相反，限定区间(37-32767);参数2为时间（毫秒）
-Sleep 180000
+SoundBeep 750, 2000 ;声音提醒;参数1数字越高，声音越尖，越小相反，范围(37-32767);参数2为时间（毫秒）
+Sleep 210000 ;暂停3.5分钟，防止重复识别同一时间的活动
 
 ;Send "{Enter}{NumpadDiv}room{Space}vanilla1{Enter}" ;换房
 ;Sleep 150
 
 Reload ;重新加载脚本
-;Run "" ;运行程序/脚本
+
