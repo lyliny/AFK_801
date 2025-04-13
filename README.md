@@ -29,8 +29,8 @@
 5. **重要：由于AutoHotkey的特殊性质，因此最好不要在脚本运行时玩竞技游戏，不然我也不知道会发生什么**
        
 * **食用方法：**       
-       1. 安装软件[AutoHotkey](https://autohotkey.com/)       
-       2. 使用[指定版本](https://github.com/lyliny/AFK_801/releases/)来进行游戏       
+       1. 安装软件[AutoHotkey](https://autohotkey.com/)（v2优先安装）       
+       2. 使用[指定版本](https://github.com/lyliny/AFK_801/releases/)（关于脚本第1条）来进行游戏       
        3. 下载对应活动脚本（.ahk文件）       
        4. 双击下载的脚本即可食用       
        
