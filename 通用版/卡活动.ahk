@@ -15,7 +15,7 @@ hours := timeArray1
 minutes := timeArray2
 seconds := timeArray3
 
-; 如果秒数小于3，减去1分钟
+; 如果秒数小于3，减去1分钟（去除脚本运行导致的秒数偏差）
 if (seconds < 3)
 {
     minutes -= 1
@@ -28,7 +28,7 @@ if (seconds < 3)
     }
 }
 
-; 加14分钟
+; 加？分钟[（活动时间间隔-1）分钟]
 minutes += 14
 
 ; 处理分钟进位
@@ -47,7 +47,7 @@ FormatTimeStr(val) {
 newTime := FormatTimeStr(hours) . ":" . FormatTimeStr(minutes)
 
 ; 定义任务名称
-TaskName := "TFMtime"
+TaskName := "eventtime"
 ; 播放声音的 PowerShell 命令（隐藏执行）
 psCommand := "powershell -windowstyle hidden -c (New-Object Media.SoundPlayer 'C:\Windows\Media\Alarm01.wav').PlaySync()"
 
