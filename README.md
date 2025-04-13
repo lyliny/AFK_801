@@ -10,23 +10,23 @@
        
 * **关于脚本：**       
 1. 由于后台识别活动，因此脚本要在指定版本中使用（见脚本开头,现行默认为20打包版）       
-2. 如需换房：  
+2. 换房（非主动式）：  
 将脚本复制成2份，注释脚本底下的Reload命令，脚本1：Send后添加房名如vanilla2，Run后填入脚本2地址；脚本2：Send添加房名如vanilla1，Run后填入脚本1地址。（多份脚本也如此往复）  
-    <details>
-    <summary>点此看换房代码示例</summary>
-    <pre><code>
-    Send "{Enter}{NumpadDiv}room{Space}vanilla1{Enter}" ;换房
-    </code></pre>
-    </details>
-3. 卡多次活动：       
+      <details>
+      <summary>点此看换房代码示例</summary>
+      <pre><code>
+      Send "{Enter}{NumpadDiv}room{Space}vanilla1{Enter}" ;换房
+      </code></pre>
+      </details>
+3. 卡多次活动：  
 在活动的前一分钟进行声音提醒；在事先准备好的AFK房间，疯狂跳过地图以快速进入活动，然后快速进入其他房间，可拿到多倍活动奖励。
-    <details>
-    <summary>点此看换房代码示例</summary>
-    <pre><code>
-    仓库通用版文件夹内，请注意UAC权限！！！
-    </code></pre>
-    </details>
-4. **重要：由于AutoHotkey的特殊性质，因此最好不要在脚本运行时玩竞技游戏，不然我也不知道会发生什么**
+      <details>
+      <summary>点此看卡活动代码示例</summary>
+      <pre><code>
+      仓库通用版文件夹内，请注意UAC权限！！！每个活动的时间间隔！!
+      </code></pre>
+      </details>
+5. **重要：由于AutoHotkey的特殊性质，因此最好不要在脚本运行时玩竞技游戏，不然我也不知道会发生什么**
        
 * **食用方法：**       
        1. 安装软件[AutoHotkey](https://autohotkey.com/)       
