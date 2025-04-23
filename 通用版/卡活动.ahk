@@ -1,5 +1,5 @@
 ; CHATGPT
-; 自动以管理员身份运行（根据ahk官方教程网站，此处代码如果 UAC 禁止，脚本会进入无限重启的循环之中;懒得让AI再改了！！！）
+; 自动以管理员身份运行（根据ahk官方教程网站，此处代码如果被 UAC 禁止，脚本会进入无限重启的循环之中;使用前请修改 UAC 权限。懒得让AI再改了！！！）
 if not A_IsAdmin
 {
     Run *RunAs "%A_ScriptFullPath%"
