@@ -26,7 +26,7 @@ Gui, Add, Text, vResult1 xs+10 ys+105, 下次活动时间：等待...
 Gui, Add, Button, gDeleteTaskFirst xs+170 ys+140 w90, 删除提醒1
 
 ; 第二部分：下次活动分钟
-Gui, Add, GroupBox, x10 w270 h145 Section, 下次活动分钟(手动-1分钟)
+Gui, Add, GroupBox, x10 w270 h145 Section, 下次活动分钟(自己手动-1分钟)
 Gui, Add, Text, xs+10 ys+30, 下次活动分钟（0-59）：
 Gui, Add, Edit, vNextMin xs+180 ys+25 w80 Number
 Gui, Add, Button, gCalculateSecond xs+10 ys+95 w90, 显示活动时间并提醒2
