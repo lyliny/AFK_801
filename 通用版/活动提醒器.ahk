@@ -22,7 +22,7 @@ Gui, Add, Edit, vLastMin xs+180 ys+25 w80 Number Limit2
 Gui, Add, Text, xs+10 ys+65, 活动间隔分钟（0-59）：
 Gui, Add, Edit, vIntervalMin xs+180 ys+60 w80 Number Limit2
 Gui, Add, Text, vResult1 xs+10 ys+105, 下次活动时间：等待数据中...
-Gui, Add, Button, gCalculateFirst xs+170 ys+125 w90, 显示活动时间并提醒1
+Gui, Add, Button, gTimeFirst xs+170 ys+125 w90, 显示活动时间并提醒1
 Gui, Add, Button, gDeleteTaskFirst xs+10 ys+130 w90, 删除提醒1
 
 ; 第二部分：下次活动分钟
@@ -30,13 +30,13 @@ Gui, Add, GroupBox, x10 w270 h145 Section, 下次活动分钟
 Gui, Add, Text, xs+10 ys+30, 下次活动分钟（0-59）：
 Gui, Add, Edit, vNextMin xs+180 ys+25 w80 Number Limit2
 Gui, Add, Text, vResult2 xs+10 ys+70, 下次活动时间：等待数据中...
-Gui, Add, Button, gCalculateSecond xs+170 ys+90 w90, 显示活动时间并提醒2
+Gui, Add, Button, gTimeSecond xs+170 ys+90 w90, 显示活动时间并提醒2
 Gui, Add, Button, gDeleteTaskSecond xs+10 ys+95 w90, 删除提醒2
 
 Gui, Show, , 活动提醒器(手动版)
 return
 
-CalculateFirst:
+TimeFirst:
     Gui, Submit, NoHide
 	; 验证输入
     If (LastMin = "" || IntervalMin = "")
@@ -87,7 +87,7 @@ CalculateFirst:
 return
 
 
-CalculateSecond:
+TimeSecond:
     Gui, Submit, NoHide
 	; 验证输入
     If (NextMin = "")
