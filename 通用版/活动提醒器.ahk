@@ -12,27 +12,30 @@ if not A_IsAdmin
 Gui, Margin, 10, 10
 Gui, Font, s10
 
-; 显示打开时间
-Gui, Add, Text, w200, 脚本打开时间：%A_Hour%:%A_Min%
+; 开头
+Gui, Add, GroupBox, w270 h105 Section, 脚本打开时间：%A_Hour%:%A_Min%
+Gui, Add, Text, xs+5 ys+25, 第一部分，下次活动时间=提醒时间1+1分钟
+Gui, Add, Text, xs+5 ys+45, 第二部分，下次活动时间=提醒时间2
+Gui, Add, Text, xs+5 ys+65 w255, 建议：第二部分输入时-1分钟(下次活动时间=提醒时间2+1分钟)，可以更早蹲活动
 
 ; 第一部分：上次活动分钟 + 活动间隔分钟
-Gui, Add, GroupBox, w270 h170 Section, 上次活动分钟 + 活动间隔分钟(自动-1分钟)
+Gui, Add, GroupBox, x10 w270 h170 Section, 一：上次分钟+间隔分钟-1分钟
 Gui, Add, Text, xs+10 ys+30, 上次活动分钟（0-59）：
 Gui, Add, Edit, vLastMin xs+180 ys+25 w80 Number Limit2
 Gui, Add, Text, xs+10 ys+65, 活动间隔分钟（0-59）：
 Gui, Add, Edit, vIntervalMin xs+180 ys+60 w80 Number Limit2
 Gui, Font, Bold ; 字体加粗
-Gui, Add, Text, vResult1 xs+10 ys+105, 下次活动时间：等待数据中...
+Gui, Add, Text, vResult1 xs+10 ys+105, 提醒时间1：等待中...
 Gui, Font, Norm ; 字体还原
 Gui, Add, Button, gNetEventTimeFirst xs+170 ys+125 w90, 显示活动时间并提醒1
 Gui, Add, Button, gDeleteTaskFirst xs+10 ys+130 w90, 删除提醒1
 
 ; 第二部分：下次活动分钟
-Gui, Add, GroupBox, x10 w270 h145 Section, 下次活动分钟
+Gui, Add, GroupBox, x10 w270 h145 Section, 二：下次活动分钟
 Gui, Add, Text, xs+10 ys+30, 下次活动分钟（0-59）：
 Gui, Add, Edit, vNextMin xs+180 ys+25 w80 Number Limit2
 Gui, Font, Bold ; 字体加粗
-Gui, Add, Text, vResult2 xs+10 ys+70, 下次活动时间：等待数据中...
+Gui, Add, Text, vResult2 xs+10 ys+70, 提醒时间2：等待中...
 Gui, Font, Norm ; 字体还原
 Gui, Add, Button, gNetEventTimeSecond xs+170 ys+90 w90, 显示活动时间并提醒2
 Gui, Add, Button, gDeleteTaskSecond xs+10 ys+95 w90, 删除提醒2
@@ -76,7 +79,7 @@ NetEventTimeFirst:
     formattedMin := newMin < 10 ? "0" newMin : newMin
     formattedHour := newHour < 10 ? "0" newHour : newHour
     newTime := formattedHour . ":" . formattedMin
-    GuiControl,, Result1, % "下次活动时间：" newTime
+    GuiControl,, Result1, % "提醒时间1：" newTime
     
     ; 创建计划任务
     CreateTask(newTime, 1)
@@ -120,7 +123,7 @@ NetEventTimeSecond:
     formattedMin := newMin < 10 ? "0" newMin : newMin
     formattedHour := newHour < 10 ? "0" newHour : newHour
     newTime := formattedHour . ":" . formattedMin
-    GuiControl,, Result2, % "下次活动时间：" newTime
+    GuiControl,, Result2, % "提醒时间2：" newTime
     
     ; 创建计划任务
     CreateTask(newTime, 2)
@@ -167,19 +170,19 @@ CreateTask(newTime, taskNum) {
     RunWait, %ComSpec% /c schtasks /Create /TN %TaskName% /TR "%psCommand%" /SC ONCE /SD %formattedDate% /ST %newTime% /F, , Hide
     
     ; 显示创建信息
-    MsgBox, 已创建计划任务!`n任务名称: %TaskName%`n执行时间: %formattedDate% %newTime%
+    ;MsgBox, 已创建计划任务!`n任务名称: %TaskName%`n执行时间: %formattedDate% %newTime%
 }
 
 
 ; 删除提醒任务1
 DeleteTaskFirst:
 	RunWait, %ComSpec% /c schtasks /Delete /TN EventTime1 /F, , Hide
-	MsgBox, 已删除 EventTime1 的提醒任务
+	MsgBox, 删除提醒任务：EventTime1
 return
 ; 删除提醒任务2
 DeleteTaskSecond:
 	RunWait, %ComSpec% /c schtasks /Delete /TN EventTime2 /F, , Hide
-	MsgBox, 已删除 EventTime2 的提醒任务
+	MsgBox, 删除提醒任务：EventTime2
 return
 
 
