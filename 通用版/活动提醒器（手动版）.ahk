@@ -1,4 +1,4 @@
-﻿; 自动以管理员身份运行（根据ahk官方教程网站，此处代码如果被 UAC 禁止，脚本会进入无限重启的循环之中;使用前请修改 UAC 权限。懒得让AI再改了！！！）
+; 自动以管理员身份运行（根据ahk官方教程网站，此处代码如果被 UAC 禁止，脚本会进入无限重启的循环之中;使用前请修改 UAC 权限。懒得让AI再改了！！！）
 ;====================
 ;已经有人试过:ahk转圈/弹出窗口，无法关闭（只能重启电脑）,必须更改uac权限！！！
 ;====================
@@ -18,8 +18,9 @@ Gui, Add, Text, xs+10 ys+30, 上次活动分钟（0-59）:
 Gui, Add, Edit, vLastMin xs+180 ys+25 w80 Number Limit2
 Gui, Add, Text, xs+10 ys+65, 活动间隔分钟（0-59）:
 Gui, Add, Edit, vIntervalMin xs+180 ys+60 w80 Number Limit2
+Gui, Add, Text, xs+25 ys+105, 提醒时间1:
 Gui, Font, Bold ; 字体加粗
-Gui, Add, Text, vResult1 xs+10 ys+105, 提醒时间1:等待中...
+Gui, Add, Text, vResult1 xs+120 ys+105, 等待中...
 Gui, Font, Norm ; 字体还原
 Gui, Add, Button, gNetEventTimeFirst xs+170 ys+125 w90, 显示活动时间并提醒1
 Gui, Add, Button, gDeleteTaskFirst xs+10 ys+130 w90, 删除提醒1
@@ -28,8 +29,9 @@ Gui, Add, Button, gDeleteTaskFirst xs+10 ys+130 w90, 删除提醒1
 Gui, Add, GroupBox, x10 w270 h145 Section, 二:下次活动分钟
 Gui, Add, Text, xs+10 ys+30, 下次活动分钟（0-59）:
 Gui, Add, Edit, vNextMin xs+180 ys+25 w80 Number Limit2
+Gui, Add, Text, xs+25 ys+70, 提醒时间2:
 Gui, Font, Bold ; 字体加粗
-Gui, Add, Text, vResult2 xs+10 ys+70, 提醒时间2:等待中...
+Gui, Add, Text, vResult2 xs+120 ys+70, 等待中...
 Gui, Font, Norm ; 字体还原
 Gui, Add, Button, gNetEventTimeSecond xs+170 ys+90 w90, 显示活动时间并提醒2
 Gui, Add, Button, gDeleteTaskSecond xs+10 ys+95 w90, 删除提醒2
@@ -79,7 +81,7 @@ NetEventTimeFirst:
     formattedMin := newMin < 10 ? "0" newMin : newMin
     formattedHour := newHour < 10 ? "0" newHour : newHour
     newTime := formattedHour . ":" . formattedMin
-    GuiControl,, Result1, % "提醒时间1:" newTime
+    GuiControl,, Result1, % newTime
     
     ; 创建计划任务
     CreateTask(newTime, 1)
@@ -123,7 +125,7 @@ NetEventTimeSecond:
     formattedMin := newMin < 10 ? "0" newMin : newMin
     formattedHour := newHour < 10 ? "0" newHour : newHour
     newTime := formattedHour . ":" . formattedMin
-    GuiControl,, Result2, % "提醒时间2:" newTime
+    GuiControl,, Result2, %  newTime
     
     ; 创建计划任务
     CreateTask(newTime, 2)
