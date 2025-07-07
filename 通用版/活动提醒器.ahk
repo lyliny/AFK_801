@@ -38,15 +38,16 @@ return
 
 CalculateFirst:
     Gui, Submit, NoHide
-	; 验证输入范围
+	; 验证输入
     If (LastMin = "" || IntervalMin = "")
     {
-        MsgBox, 上次活动分钟 和/或 活动间隔分钟 为空！
+        MsgBox, 上次活动分钟 和 活动间隔分钟 不得为空！
         return
     }
 	; 转换前导零输入为数字
     LastMin := LastMin + 0
     IntervalMin := IntervalMin + 0
+
     if (LastMin < 0 || LastMin > 59)
     {
         MsgBox, 上次活动分钟 必须在0到59之间！
@@ -74,21 +75,21 @@ CalculateFirst:
     GuiControl,, Result1, % "下次活动时间：" newTime
 
     ; 创建计划任务
-    TaskName := "eventtime1"
+    TaskNameFirst := "eventtime1"
     psCommand := "powershell -windowstyle hidden -c (New-Object Media.SoundPlayer 'C:\Windows\Media\Alarm01.wav').PlaySync()"
 
     ; 删除旧任务（如果存在）
-    RunWait, %ComSpec% /c schtasks /Delete /TN %TaskName% /F, , Hide
+    RunWait, %ComSpec% /c schtasks /Delete /TN %TaskNameFirst% /F, , Hide
 
     ; 创建新任务
-    RunWait, %ComSpec% /c schtasks /Create /TN %TaskName% /TR "%psCommand%" /SC ONCE /ST %newTime% /F, , Hide
+    RunWait, %ComSpec% /c schtasks /Create /TN %TaskNameFirst% /TR "%psCommand%" /SC ONCE /ST %newTime% /F, , Hide
     ;MsgBox, 已创建任务计划1! 将在 %newTime% 播放提醒音效。
 return
 
 
 CalculateSecond:
     Gui, Submit, NoHide
-	; 验证输入范围
+	; 验证输入
     If (NextMin = "")
     {
         MsgBox, 请输入 下次活动分钟 ！
@@ -96,6 +97,7 @@ CalculateSecond:
     }
     ; 转换前导零输入为数字
     NextMin := NextMin + 0
+
     if (NextMin < 0 || NextMin > 59)
     {
         MsgBox, 下次活动分钟 必须在0到59之间！
@@ -131,25 +133,25 @@ CalculateSecond:
     GuiControl,, Result2, % "下次活动时间：" newTime
 
     ; 创建计划任务
-    TaskName := "eventtime2"
+    TaskNameSecond := "eventtime2"
     psCommand := "powershell -windowstyle hidden -c (New-Object Media.SoundPlayer 'C:\Windows\Media\Alarm01.wav').PlaySync()"
 
     ; 删除旧任务（如果存在）
-    RunWait, %ComSpec% /c schtasks /Delete /TN %TaskName% /F, , Hide
+    RunWait, %ComSpec% /c schtasks /Delete /TN %TaskNameSecond% /F, , Hide
 
     ; 创建新任务
-    RunWait, %ComSpec% /c schtasks /Create /TN %TaskName% /TR "%psCommand%" /SC ONCE /ST %newTime% /F, , Hide
+    RunWait, %ComSpec% /c schtasks /Create /TN %TaskNameSecond% /TR "%psCommand%" /SC ONCE /ST %newTime% /F, , Hide
     ;MsgBox, 已创建任务计划2! 将在 %newTime% 播放提醒音效。
 return
 
 
 ; 删除提醒任务1
 DeleteTaskFirst:
-	RunWait, %ComSpec% /c schtasks /Delete /TN eventtime1 /F, , Hide
+	RunWait, %ComSpec% /c schtasks /Delete /TN %TaskNameFirst% /F, , Hide
 return
 ; 删除提醒任务2
 DeleteTaskSecond:
-	RunWait, %ComSpec% /c schtasks /Delete /TN eventtime2 /F, , Hide
+	RunWait, %ComSpec% /c schtasks /Delete /TN %TaskNameSecond% /F, , Hide
 return
 
 
