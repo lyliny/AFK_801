@@ -12,12 +12,6 @@ if not A_IsAdmin
 Gui, Margin, 10, 10
 Gui, Font, s10
 
-; 开头
-Gui, Add, GroupBox, w270 h105 Section, 脚本打开时间：%A_Hour%:%A_Min%
-Gui, Add, Text, xs+5 ys+25, 第一部分，下次活动时间=提醒时间1+1分钟
-Gui, Add, Text, xs+5 ys+45, 第二部分，下次活动时间=提醒时间2
-Gui, Add, Text, xs+5 ys+65 w255, 建议：第二部分输入时-1分钟(下次活动时间=提醒时间2+1分钟)，可以更早蹲活动
-
 ; 第一部分：上次活动分钟 + 活动间隔分钟
 Gui, Add, GroupBox, x10 w270 h170 Section, 一：上次分钟+间隔分钟-1分钟
 Gui, Add, Text, xs+10 ys+30, 上次活动分钟（0-59）：
@@ -39,6 +33,12 @@ Gui, Add, Text, vResult2 xs+10 ys+70, 提醒时间2：等待中...
 Gui, Font, Norm ; 字体还原
 Gui, Add, Button, gNetEventTimeSecond xs+170 ys+90 w90, 显示活动时间并提醒2
 Gui, Add, Button, gDeleteTaskSecond xs+10 ys+95 w90, 删除提醒2
+
+; 提示
+Gui, Add, GroupBox, x10 w270 h105 Section, 脚本打开时间：%A_Hour%:%A_Min%
+Gui, Add, Text, xs+5 ys+25, 第一部分，下次活动时间=提醒时间1+1分钟
+Gui, Add, Text, xs+5 ys+45, 第二部分，下次活动时间=提醒时间2
+Gui, Add, Text, xs+5 ys+65 w255, 建议：第二部分输入时-1分钟(下次活动时间=提醒时间2+1分钟)，可以更早蹲活动
 
 Gui, Show, , 活动提醒器（手动版）
 return
@@ -64,12 +64,12 @@ NetEventTimeFirst:
         return
     }
     
-    ; 计算提醒分钟1并处理进位
+    ; 计算下次活动分钟并处理进位
     totalMin := LastMin + IntervalMin - 1
     carryHours := totalMin // 60
     newMin := Mod(totalMin, 60)
     
-    ; 获取当前时间并计算提醒时间1
+    ; 获取当前时间并计算下次活动时间
     currentTime := A_Now
     currentHour := A_Hour
     currentMin := A_Min
@@ -105,7 +105,7 @@ NetEventTimeSecond:
     currentHour := A_Hour
     currentMin := A_Min
     
-    ; 计算提醒时间2
+    ; 计算下次活动时间
     if (NextMin > currentMin) {
 		; 如果输入分钟大于当前分钟，小时不变
         newHour := currentHour
@@ -149,7 +149,7 @@ CreateTask(newTime, taskNum) {
     
     ; 检查是否需要推迟到明天
     if (newHour < currentHour || (newHour == currentHour && newMin <= currentMin)) {
-        ; 如果提醒时间在当前时间之前，推迟到明天
+        ; 如果新时间在当前时间之前，推迟到明天
         planDate += 1, Days
         FormatTime, planDate, %planDate%, yyyyMMdd
     }
@@ -160,13 +160,13 @@ CreateTask(newTime, taskNum) {
     ; 任务计划程序名称
     TaskName := "EventTime" . taskNum
     
-    ; 任务计划程序操作---PowerShell命令（播放系统提示音）
+    ; PowerShell命令（播放系统提示音）
     psCommand := "powershell -windowstyle hidden -c (New-Object Media.SoundPlayer 'C:\Windows\Media\Alarm01.wav').PlaySync()"
     
-    ; 删除旧任务（如果存在）
+	; 删除旧任务（如果存在）
     RunWait, %ComSpec% /c schtasks /Delete /TN %TaskName% /F, , Hide
 
-    ; 创建计划任务
+    ; 创建计划任务（指定日期和时间）
     RunWait, %ComSpec% /c schtasks /Create /TN %TaskName% /TR "%psCommand%" /SC ONCE /SD %formattedDate% /ST %newTime% /F, , Hide
     
     ; 显示创建信息
