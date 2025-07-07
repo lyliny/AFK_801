@@ -174,12 +174,12 @@ CreateTask(newTime, taskNum) {
 ; 删除提醒任务1
 DeleteTaskFirst:
 	RunWait, %ComSpec% /c schtasks /Delete /TN EventTime1 /F, , Hide
-	MsgBox, 已删除 EventTime1 的任务
+	MsgBox, 已删除 EventTime1 的提醒任务
 return
 ; 删除提醒任务2
 DeleteTaskSecond:
 	RunWait, %ComSpec% /c schtasks /Delete /TN EventTime2 /F, , Hide
-	MsgBox, 已删除 EventTime2 的任务
+	MsgBox, 已删除 EventTime2 的提醒任务
 return
 
 
