@@ -64,12 +64,12 @@ NetEventTimeFirst:
         return
     }
     
-    ; 计算下次活动分钟并处理进位
+    ; 计算提醒分钟1并处理进位
     totalMin := LastMin + IntervalMin - 1
     carryHours := totalMin // 60
     newMin := Mod(totalMin, 60)
     
-    ; 获取当前时间并计算下次活动时间
+    ; 获取当前时间并计算提醒时间1
     currentTime := A_Now
     currentHour := A_Hour
     currentMin := A_Min
@@ -105,7 +105,7 @@ NetEventTimeSecond:
     currentHour := A_Hour
     currentMin := A_Min
     
-    ; 计算下次活动时间
+    ; 计算提醒时间2
     if (NextMin > currentMin) {
 		; 如果输入分钟大于当前分钟，小时不变
         newHour := currentHour
@@ -149,7 +149,7 @@ CreateTask(newTime, taskNum) {
     
     ; 检查是否需要推迟到明天
     if (newHour < currentHour || (newHour == currentHour && newMin <= currentMin)) {
-        ; 如果新时间在当前时间之前，推迟到明天
+        ; 如果提醒时间在当前时间之前，推迟到明天
         planDate += 1, Days
         FormatTime, planDate, %planDate%, yyyyMMdd
     }
@@ -160,13 +160,13 @@ CreateTask(newTime, taskNum) {
     ; 任务计划程序名称
     TaskName := "EventTime" . taskNum
     
-    ; PowerShell命令（播放系统提示音）
+    ; 任务计划程序操作---PowerShell命令（播放系统提示音）
     psCommand := "powershell -windowstyle hidden -c (New-Object Media.SoundPlayer 'C:\Windows\Media\Alarm01.wav').PlaySync()"
     
-	; 删除旧任务（如果存在）
+    ; 删除旧任务（如果存在）
     RunWait, %ComSpec% /c schtasks /Delete /TN %TaskName% /F, , Hide
 
-    ; 创建计划任务（指定日期和时间）
+    ; 创建计划任务
     RunWait, %ComSpec% /c schtasks /Create /TN %TaskName% /TR "%psCommand%" /SC ONCE /SD %formattedDate% /ST %newTime% /F, , Hide
     
     ; 显示创建信息
